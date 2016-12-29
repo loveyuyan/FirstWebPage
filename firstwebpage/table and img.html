@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang='en'>
+  <head>
+    <meta charset='utf-8'>
+    <meta http-equiv='X-UA-Compatible' content='IE=edge'>
+    <meta name='viewport' content='width=device-width, initial-scale=1'>
+    <title>表格</title>
+    <link rel="stylesheet" href="./css/bootstrap.min.css">
+    <script src="./js/angular.min.js"></script>
+    <style media="screen" type="text/css">
+      .table th, .table td{text-align: center;}
+    </style>
+  </head>
+  <body>
+    <table class="table table-bordered table-condensed table-hover table-striped table-responsive">
+      <!--
+      表格
+      1.IE8不兼容条纹状表格类.table-striped
+      2.边框表格类.table-bordered，鼠标悬停类.table-hover，紧缩表格类.table-condensed
+      3.解决FF和响应式表格不兼容的方法
+        @-moz-document url-prefix() {
+          fieldset { display: table-cell; }
+        }
+      图片
+      1.响应式图片类.img-responsive，其实质是为图片设置了max-width: 100%;和height: auto;属性，
+        从而让图片在其父元素中更好的缩放。
+      2.在IE8-10中，设置为.img-responsive的SVG图像显示出的尺寸不匀称。
+        为了解决这个问题，在出问题的地方添加width: 100% \9;即可。
+      3.IE8不支持CSS3中的圆角属性。
+      -->
+      <thead>
+        <th>#</th>
+        <th>Name</th>
+        <th>City</th>
+      </thead>
+      <tbody>
+        <tr>
+          <td>1</td>
+          <td>湖北省</td>
+          <td>武汉</td>
+        </tr>
+        <tr>
+          <td>2</td>
+          <td>安徽省</td>
+          <td>合肥</td>
+        </tr>
+        <tr>
+          <td>3</td>
+          <td>广东省</td>
+          <td>广州</td>
+        </tr>
+      </tbody>
+    </table>
+    <img src="./img/sucai1.jpg" alt="..." class="img-responsive img-rounded">
+    <img src="./img/sucai1.jpg" alt="..." class="img-responsive img-circle">
+    <img src="./img/sucai1.jpg" alt="..." class="img-responsive img-thumbnail">
+    <script src="./js/jquery.min.js"></script>
+    <script src="./js/bootstrap.min.js"></script>
+  </body>
+</html>

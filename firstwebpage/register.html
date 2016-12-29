@@ -1,0 +1,349 @@
+<!DOCTYPE html>
+<html lang="zh">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=Edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="./css/bootstrap.min.css">
+    <link rel="stylesheet" href="./css/mystyle.css">
+    <script src="./js/angular.min.js"></script>
+    <script src="./js/jquery.min.js"></script>
+    <script src="./js/bootstrap.min.js"></script>
+    <title>yuyan</title>
+  </head>
+  <body  data-ng-app="myApp" data-ng-controller="myCtrl" onload="showTimer()">
+    <nav class="navbar navbar-inverse navbar-static-top navbar-top-style" id="navbox" style="background-color:black;">
+      <div class="header">
+        <div class="container">
+          <div class="citybox">
+            <span class="glyphicon glyphicon-map-marker"></span>
+            <select class="city">
+              <option>北京</option>
+              <option>武汉</option>
+              <option>上海</option>
+              <option>深圳</option>
+            </select>
+          </div>
+          <div class="weather"></div>
+          <div class="time"></div>
+        </div>
+      </div>
+      <div class="container">
+        <div class="navbar-header">
+          <button type='button' class='navbar-toggle' data-toggle="collapse" data-target="#mycollapse">
+            <span class="sr-only">切换导航</span>
+      			<span class="icon-bar"></span>
+      			<span class="icon-bar"></span>
+      			<span class="icon-bar"></span>
+          </button>
+          <a class="navbar-brand" href="#">网站logo</a>
+        </div>
+        <div class="collapse navbar-collapse" id="mycollapse">
+          <ul class="nav navbar-nav">
+            <li><a href="#">主页</a></li>
+            <li class="dropdown">
+              <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+                  课程<span class="caret"></span>
+              </a>
+              <ul class="dropdown-menu" id="menu-style" role="menu">
+                  <li class="dropdown-header">
+                    <p class="text-center"><strong>前端</strong></p>
+                  </li>
+                  <li><a href="#html">&nbsp;&nbsp;HTML</a></li>
+                  <li><a href="#css">&nbsp;&nbsp;CSS</a></li>
+                  <li class="disabled"><a href="#">&nbsp;&nbsp;JAVASCRIPT</a></li>
+                  <li class="divider"></li>
+                  <li class="dropdown-header">
+                    <p class="text-center"><strong>后端</strong></p>
+                  </li>
+                  <li><a href="#back">&nbsp;&nbsp;PHP</a></li>
+                  <li><a href="#back">&nbsp;&nbsp;C++</a></li>
+                  <li><a href="#back">&nbsp;&nbsp;JAVA</a></li>
+                  <li><a href="#back">&nbsp;&nbsp;SQL</a></li>
+              </ul>
+            </li>
+            <li><a href="#">问答</a></li>
+            <li><a href="#">职位</a></li>
+            <li><a href="#">关于我们</a></li>
+          </ul>
+          <ul class="nav navbar-nav navbar-right">
+            <li>
+              <form class='nav navbar-form' action="" method="" role="form"
+              role="search" data-ng-mouseenter="toggle7()" data-ng-mouseleave="toggle7()">
+                <div class="form-group">
+                  <input type='text' class='form-control' placeholder='' data-ng-show="myVar7">
+                  <button type='submit' class='btn btn-info'><span class="glyphicon glyphicon-search"></span></button>
+                </div>
+              </form>
+            </li>
+            <li>
+              <!-- 事件详情看mypopover.js -->
+              <a class="navbar-link mypopover" data-toggle="popover" data-container="body" data-placement="bottom"
+              data-content="<p class='text-center'>扫描二维码下载APP</p><p class='text-center'><img src='./img/qrcode.png' alt=''></p>">
+              <span class="glyphicon glyphicon-arrow-down"></span>下载
+              </a>
+            </li>
+            <li>
+              <a class="" data-toggle="modal" data-target="#mymodal1"><span class="glyphicon glyphicon-user"></span>注册</a>
+              <div class="modal" id="mymodal1" data-backdrop="false" tabindex="-1" role="dialog"  aria-hidden="true">
+                <div class="modal-dialog modal-style">
+                  <div class="modal-content">
+                    <div class="modal-header">
+                      <h2 class="modal-title text-center" >用户注册</h2>
+                    </div>
+                    <div class="modal-body">
+                      <form class="form form-horizontal" action="" method="" role="form">
+                        <div class="form-group">
+                          <div class="col-sm-offset-3 col-sm-6" >
+                            <input class="form-control " type="email"  name="" value=""
+                            placeholder="邮箱" data-ng-focus="toggle1()" data-ng-blur="toggle1()">
+                          </div>
+                          <div class="col-sm-3">
+                            <span class="help-block help-style" data-ng-show="myVar1">请输入你的邮箱</span>
+                          </div>
+                        </div>
+                        <div class="form-group">
+                          <div class="col-sm-offset-3 col-sm-3">
+                            <input class="form-control" type="text" name="" value=""
+                            placeholder="验证码" data-ng-focus="toggle2()" data-ng-blur="toggle2()">
+                          </div>
+                          <div class="col-sm-3">
+                            <button type='submit' class='form-control btn btn-block btn-style'>获取验证码</button>
+                          </div>
+                          <div class="col-sm-3">
+                            <span class="help-block help-style" data-ng-show="myVar2">请输入你的验证码</span>
+                          </div>
+                        </div>
+                        <div class="form-group">
+                          <div class="col-sm-offset-3 col-sm-6">
+                            <input class="form-control" type="text" name="" value=""
+                            placeholder="姓名" data-ng-focus="toggle3()" data-ng-blur="toggle3()">
+                          </div>
+                          <div class="col-sm-3">
+                            <span class="help-block help-style" data-ng-show="myVar3">真实姓名，方便交流</span>
+                          </div>
+                        </div>
+                        <div class="form-group">
+                          <div class="col-sm-offset-3 col-sm-6">
+                            <input class="form-control" type="password" name="" value=""
+                            placeholder="密码" data-ng-focus="toggle4()" data-ng-blur="toggle4()">
+                          </div>
+                          <div class="col-sm-3">
+                            <span class="help-block help-style" ng-show="myVar4">密码最低为6位，牢记</span>
+                          </div>
+                        </div>
+                        <div class="form-group">
+                          <div class="col-sm-offset-3 col-sm-6">
+                            <button type="button" class='form-control btn btn-block btn-style'>注册</button>
+                            <span class="help-block help-style">点击注册，表明你同意我们的<a href="#">服务条款</a></span>
+                          </div>
+                        </div>
+                      </form>
+                    </div>
+                    <div class="modal-footer">
+                      <div class="col-sm-offset-1 col-sm-3">
+                        <button type="button" class="btn btn-block btn-style" data-dismiss="modal">
+                          <span class="glyphicon glyphicon-chevron-left"></span>&nbsp;&nbsp;退出
+                        </button>
+                      </div>
+                      <div class="col-sm-offset-4 col-sm-3">
+                        <button type="button" class="btn btn-block btn-style" data-dismiss="modal" data-toggle="modal" data-target="#mymodal2">
+                          登陆&nbsp;&nbsp;<span class="glyphicon glyphicon-chevron-right"></span>
+                        </button>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </li>
+            <li>
+              <a class="" data-toggle="modal" data-target="#mymodal2" href="#" >
+              <span class="glyphicon glyphicon-log-in"></span> 登录
+              </a>
+              <div class="modal" id="mymodal2"  data-backdrop="false" tabindex="-1" role="dialog" aria-hidden="true" >
+                <div class="modal-dialog modal-style">
+                  <div class="modal-content">
+                    <div class="modal-header">
+                      <h2 class="modal-title text-center">用户登录</h2>
+                    </div>
+                    <div class="modal-body">
+                      <form class="form form-horizontal" action="" method="" role="form">
+                        <div class="form-group">
+                          <div class="col-sm-offset-3 col-sm-6" >
+                            <input class="form-control " type="text"  name="" value=""
+                            placeholder="邮箱" data-ng-focus="toggle5()" data-ng-blur="toggle5()">
+                          </div>
+                          <div class="col-sm-3">
+                            <span class="help-block  help-style" data-ng-show="myVar5">请输入你的邮箱</span>
+                          </div>
+                        </div>
+                        <div class="form-group">
+                          <div class="col-sm-offset-3 col-sm-6">
+                            <input class="form-control" type="password" name="" value=""
+                            placeholder="密码" data-ng-focus="toggle6()" data-ng-blur="toggle6()">
+                          </div>
+                          <div class="col-sm-3">
+                            <span class="help-block help-style" data-ng-show="myVar6">请输入你的密码</span>
+                          </div>
+                        </div>
+                        <div class="form-group">
+                          <div class="col-sm-offset-3 col-sm-6">
+                            <button type="button" class='form-control btn btn-block btn-style'>登录</button>
+                          </div>
+                        </div>
+                      </form>
+                    </div>
+                    <div class="modal-footer">
+                      <div class="col-sm-offset-1 col-sm-4">
+                        <button type="button" class="btn btn-block btn-style" data-dismiss="modal">
+                          <span class="glyphicon glyphicon-chevron-left"></span>&nbsp;&nbsp;&nbsp;&nbsp;退出
+                        </button>
+                      </div>
+                      <div class="col-sm-offset-3 col-sm-4">
+                        <button type="button" class="btn btn-block btn-style"
+                        data-dismiss="modal" data-toggle="modal" data-target="#mymodal1">
+                          注册&nbsp;&nbsp;&nbsp;&nbsp;<span class="glyphicon glyphicon-chevron-right"></span>
+                        </button>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </nav>
+    <div class="register">
+      <div class="registerbox">
+        <form class="form form-horizontal" action="" method="" role="form">
+          <div class="form-group">
+            <div class="col-sm-offset-3 col-sm-6" >
+              <input class="form-control " type="email"  name="" value=""
+              placeholder="邮箱" data-ng-focus="toggle1()" data-ng-blur="toggle1()">
+            </div>
+            <div class="col-sm-3">
+              <span class="help-block help-style" data-ng-show="myVar1">请输入你的邮箱</span>
+            </div>
+          </div>
+          <div class="form-group">
+            <div class="col-sm-offset-3 col-sm-3">
+              <input class="form-control" type="text" name="" value=""
+              placeholder="验证码" data-ng-focus="toggle2()" data-ng-blur="toggle2()">
+            </div>
+            <div class="col-sm-3">
+              <button type='submit' class='form-control btn btn-block btn-style'>获取验证码</button>
+            </div>
+            <div class="col-sm-3">
+              <span class="help-block help-style" data-ng-show="myVar2">请输入你的验证码</span>
+            </div>
+          </div>
+          <div class="form-group">
+            <div class="col-sm-offset-3 col-sm-6">
+              <input class="form-control" type="text" name="" value=""
+              placeholder="姓名" data-ng-focus="toggle3()" data-ng-blur="toggle3()">
+            </div>
+            <div class="col-sm-3">
+              <span class="help-block help-style" data-ng-show="myVar3">真实姓名，方便交流</span>
+            </div>
+          </div>
+          <div class="form-group">
+            <div class="col-sm-offset-3 col-sm-6">
+              <input class="form-control" type="password" name="" value=""
+              placeholder="密码" data-ng-focus="toggle4()" data-ng-blur="toggle4()">
+            </div>
+            <div class="col-sm-3">
+              <span class="help-block help-style" ng-show="myVar4">密码最低为6位，牢记</span>
+            </div>
+          </div>
+          <div class="form-group">
+            <div class="col-sm-offset-3 col-sm-6">
+              <button type="button" class='form-control btn btn-block btn-style'>注册</button>
+              <span class="help-block help-style">点击注册，表明你同意我们的<a href="#">服务条款</a></span>
+            </div>
+          </div>
+        </form>
+      </div>
+    </div>
+    <nav class="navbar navbar-inverse navbar-static-bottom navbar-bottom-style">
+      <div class="container-fluid">
+        <div class=" bottom-menu-left pull-left">
+          <ul>
+            <li><a href="#">产品</a>
+              <ul>
+                <li><a href="#">IOS版</a></li>
+                <li><a href="#">Android版</a></li>
+                <li><a href="#">价格</a></li>
+                <li><a href="#">数据安全</a></li>
+              </ul>
+            </li>
+            <li><a href="#">公司</a>
+              <ul>
+                <li><a href="#">媒体报道</a></li>
+                <li><a href="#">获得奖项</a></li>
+                <li><a href="#">关于公司</a></li>
+                <li><a href="#">团队介绍</a></li>
+                <li><a href="#">加入我们</a></li>
+              </ul>
+            </li>
+            <li><a href="#">支持</a>
+              <ul>
+                <li><a href="#">开发者中心</a></li>
+                <li><a href="#">问答社区</a></li>
+                <li><a href="#">用户指南</a></li>
+                <li><a href="#">官方博客</a></li>
+              </ul>
+            </li>
+            <li><a href="#">友情链接</a>
+              <ul>
+                <li><a href="#">W3School</a></li>
+                <li><a href="#">Bootstrap</a></li>
+                <li><a href="#">GitHub</a></li>
+              </ul>
+            </li>
+          </ul>
+        </div>
+        <div class="bottom-menu-right pull-right">
+          <ul>
+            <li><a href="#"><img src="./img/logo.jpg" alt="logo"></a></li>
+            <li>
+              <div class="div">
+                <div class="div1">
+                  <a><img src="./img/div1.png" alt="..." class="img-responsive img-circle"></a>
+                </div>
+                <div class="div2">
+                  <a><img src="./img/div2.png" alt="..." class="img-responsive img-circle"></a>
+                </div>
+                <div class="div3">
+                  <a><img src="./img/div3.png" alt="..." class="img-responsive img-circle"></a>
+                </div>
+                <div class="div4">
+                  <a><img src="./img/div4.png" alt="..." class="img-responsive img-circle"></a>
+                </div>
+                <div class="div5">
+                  <a><img src="./img/div5.png" alt="..." class="img-responsive img-circle"></a>
+                </div>
+              </div>
+            </li>
+            <li>
+              <form role="form">
+                <div class="form-group">
+                  <select class="form-control">
+                    <option value="" selected>中文</option>
+                    <option value="">英语</option>
+                  </select>
+                </div>
+              </form>
+            </li>
+          </ul>
+        </div>
+      </div>
+      <div class="container">
+        <div class="footer">
+          <p class="text-center">Copyright © 2016 Yuyan&nbsp;&nbsp;&nbsp;&nbsp;京ICP备13033480235号-5</p>
+        </div>
+      </div>
+    </nav>
+    <script src="./js/myscript.js"></script>
+  </body>
+</html>

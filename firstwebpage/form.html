@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang='en'>
+  <head>
+    <meta charset='utf-8'>
+    <meta http-equiv='X-UA-Compatible' content='IE=edge'>
+    <meta name='viewport' content='width=device-width, initial-scale=1'>
+    <title>表单</title>
+    <link rel="stylesheet" href="./css/bootstrap.min.css">
+    <script src="./js/angular.min.js"></script>
+  </head>
+  <body ng-app="myApp" ng-controller="myCtrl">
+    <form class='form-horizontal' role="form">
+      <!--
+      1.表单的所有控件的宽度自行设置，默认是100%
+      2.输入控件一定添加label标签，并且有相应的校验图标类.has-feedback，图标靠右
+      3.单选多选控件别加form-control，单选控件一定要有name和value值
+      4.块级辅助文本类.help-block
+      5.bs中想用按钮尽可能使用button元素
+      -->
+      <div class="form-group">
+        <label class="control-label col-xs-4" for="">Email</label>
+        <div class="col-xs-4">
+          <input type="email" class='form-control' placeholder='邮箱'>
+        </div>
+      </div>
+      <div class="form-group">
+        <label class="control-label col-xs-4" for="">Name</label>
+        <div class="col-xs-4">
+          <input type='text' class='form-control' placeholder='姓名'>
+        </div>
+      </div>
+      <div class="form-group">
+        <label class="control-label col-xs-4" for="">Password</label>
+        <div class="col-xs-4">
+          <input type='password' class='form-control' placeholder='密码'>
+        </div>
+      </div>
+      <div class="form-group">
+        <label class="control-label col-xs-4" for="">Sex</label>
+        <div class="col-xs-4">
+            <label class="radio-inline">
+              <input type='radio' name='sex' value='male'>男
+            </label>
+            <label class="radio-inline">
+              <input type='radio' name='sex' value='female'>女
+            </label>
+        </div>
+      </div>
+      <div class="form-group">
+        <label class="control-label col-xs-4" for="">Hobby</label>
+        <div class="col-xs-4">
+            <label class="checkbox-inline">
+              <input type='checkbox' name='' value='option1'>篮球
+            </label>
+            <label class="checkbox-inline">
+              <input type='checkbox' name='' value='option2'>象棋
+            </label>
+            <label class="checkbox-inline">
+              <input type='checkbox' name='' value='option3'>游泳
+            </label>
+            <label class="checkbox-inline">
+              <input type='checkbox' name='' value='option4'>台球
+            </label>
+            <label class="checkbox-inline">
+              <input type='checkbox' name='' value='option5'>旅游
+            </label>
+            <label class="checkbox-inline">
+              <input type='checkbox' name='' value='option6'>看书
+            </label>
+            <label class="checkbox-inline">
+              <input type='checkbox' name='' value='option7'>游戏
+            </label>
+        </div>
+      </div>
+      <div class='form-group'>
+        <label class="control-label col-xs-4">Motto</label>
+        <div class="col-xs-4">
+          <textarea class='form-control' placeholder='座右铭' rows="1"></textarea>
+        </div>
+      </div>
+      <div class="form-group">
+        <label class="control-label col-xs-4">Language</label>
+        <div class="col-xs-4">
+          <select class="form-control">
+            <option value="">中文</option>
+            <option value="">英语</option>
+          </select>
+        </div>
+      </div>
+      <div class="form-group">
+        <div class="col-xs-offset-4 col-xs-4">
+          <div class="checkbox">
+            <label>
+              <input type='checkbox'>同意我们的<a href="#">服务条款</a>
+            </label>
+          </div>
+        </div>
+      </div>
+      <div class="form-group">
+        <div class="col-xs-offset-5 col-xs-2">
+          <button type='submit' class='btn btn-block btn-primary'>注册</button>
+        </div>
+      </div>
+    </form>
+    <script src="./js/jquery.min.js"></script>
+    <script src="./js/bootstrap.min.js"></script>
+  </body>
+</html>

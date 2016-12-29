@@ -1,0 +1,480 @@
+<!DOCTYPE html>
+<html lang="zh">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=Edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="./css/bootstrap.min.css">
+    <link rel="stylesheet" href="./css/mystyle.css">
+    <script src="./js/angular.min.js"></script>
+    <script src="./js/jquery.min.js"></script>
+    <script src="./js/bootstrap.min.js"></script>
+    <title>yuyan</title>
+  </head>
+  <body  data-ng-app="myApp" data-ng-controller="myCtrl" onload="showTimer()">
+    <nav class="navbar navbar-inverse navbar-fixed-top navbar-top-style" id="navbox">
+      <div class="header">
+        <div class="container">
+          <div class="citybox" onmouseout="showWeather()">
+            <span class="glyphicon glyphicon-map-marker"></span>
+            <select class="city">
+              <option>北京</option>
+              <option>武汉</option>
+              <option>上海</option>
+              <option>深圳</option>
+            </select>
+          </div>
+          <div class="weather"></div>
+          <div class="time"></div>
+        </div>
+      </div>
+      <div class="container">
+        <div class="navbar-header">
+          <button type='button' class='navbar-toggle' data-toggle="collapse" data-target="#mycollapse">
+            <span class="sr-only">切换导航</span>
+      			<span class="icon-bar"></span>
+      			<span class="icon-bar"></span>
+      			<span class="icon-bar"></span>
+          </button>
+          <a class="navbar-brand" href="#">网站logo</a>
+        </div>
+        <div class="collapse navbar-collapse" id="mycollapse">
+          <ul class="nav navbar-nav">
+            <li><a href="#">主页</a></li>
+            <li class="dropdown">
+              <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+                  课程<span class="caret"></span>
+              </a>
+              <ul class="dropdown-menu" id="menu-style" role="menu">
+                  <li class="dropdown-header">
+                    <p class="text-center"><strong>前端</strong></p>
+                  </li>
+                  <li><a href="#html">&nbsp;&nbsp;HTML</a></li>
+                  <li><a href="#css">&nbsp;&nbsp;CSS</a></li>
+                  <li class="disabled"><a href="#">&nbsp;&nbsp;JAVASCRIPT</a></li>
+                  <li class="divider"></li>
+                  <li class="dropdown-header">
+                    <p class="text-center"><strong>后端</strong></p>
+                  </li>
+                  <li><a href="#back">&nbsp;&nbsp;PHP</a></li>
+                  <li><a href="#back">&nbsp;&nbsp;C++</a></li>
+                  <li><a href="#back">&nbsp;&nbsp;JAVA</a></li>
+                  <li><a href="#back">&nbsp;&nbsp;SQL</a></li>
+              </ul>
+            </li>
+            <li><a href="#">问答</a></li>
+            <li><a href="#">职位</a></li>
+            <li><a href="#">关于我们</a></li>
+          </ul>
+          <ul class="nav navbar-nav navbar-right">
+            <li>
+              <form class='nav navbar-form' action="" method="" role="form"
+              role="search" data-ng-mouseenter="toggle7()" data-ng-mouseleave="toggle7()">
+                <div class="form-group">
+                  <input type='text' class='form-control' placeholder='' data-ng-show="myVar7">
+                  <button type='submit' class='btn btn-info'><span class="glyphicon glyphicon-search"></span></button>
+                </div>
+              </form>
+            </li>
+            <li>
+              <!-- 事件详情看mypopover.js -->
+              <a class="navbar-link mypopover" data-toggle="popover" data-container="body" data-placement="bottom"
+              data-content="<p class='text-center'>扫描二维码下载APP</p><p class='text-center'><img src='./img/qrcode.png' alt=''></p>">
+              <span class="glyphicon glyphicon-arrow-down"></span>下载
+              </a>
+            </li>
+            <li>
+              <a class="" data-toggle="modal" data-target="#mymodal1"><span class="glyphicon glyphicon-user"></span>注册</a>
+              <div class="modal" id="mymodal1" data-backdrop="false" tabindex="-1" role="dialog"  aria-hidden="true">
+                <div class="modal-dialog modal-style">
+                  <div class="modal-content">
+                    <div class="modal-header">
+                      <h2 class="modal-title text-center" >用户注册</h2>
+                    </div>
+                    <div class="modal-body">
+                      <form class="form form-horizontal" action="" method="" role="form">
+                        <div class="form-group">
+                          <div class="col-sm-offset-3 col-sm-6" >
+                            <input class="form-control " type="email"  name="" value=""
+                            placeholder="邮箱" data-ng-focus="toggle1()" data-ng-blur="toggle1()">
+                          </div>
+                          <div class="col-sm-3">
+                            <span class="help-block help-style" data-ng-show="myVar1">请输入你的邮箱</span>
+                          </div>
+                        </div>
+                        <div class="form-group">
+                          <div class="col-sm-offset-3 col-sm-3">
+                            <input class="form-control" type="text" name="" value=""
+                            placeholder="验证码" data-ng-focus="toggle2()" data-ng-blur="toggle2()">
+                          </div>
+                          <div class="col-sm-3">
+                            <button type='submit' class='form-control btn btn-block btn-style'>获取验证码</button>
+                          </div>
+                          <div class="col-sm-3">
+                            <span class="help-block help-style" data-ng-show="myVar2">请输入你的验证码</span>
+                          </div>
+                        </div>
+                        <div class="form-group">
+                          <div class="col-sm-offset-3 col-sm-6">
+                            <input class="form-control" type="text" name="" value=""
+                            placeholder="姓名" data-ng-focus="toggle3()" data-ng-blur="toggle3()">
+                          </div>
+                          <div class="col-sm-3">
+                            <span class="help-block help-style" data-ng-show="myVar3">真实姓名，方便交流</span>
+                          </div>
+                        </div>
+                        <div class="form-group">
+                          <div class="col-sm-offset-3 col-sm-6">
+                            <input class="form-control" type="password" name="" value=""
+                            placeholder="密码" data-ng-focus="toggle4()" data-ng-blur="toggle4()">
+                          </div>
+                          <div class="col-sm-3">
+                            <span class="help-block help-style" ng-show="myVar4">密码最低为6位，牢记</span>
+                          </div>
+                        </div>
+                        <div class="form-group">
+                          <div class="col-sm-offset-3 col-sm-6">
+                            <button type="button" class='form-control btn btn-block btn-style'>注册</button>
+                            <span class="help-block help-style">点击注册，表明你同意我们的<a href="#">服务条款</a></span>
+                          </div>
+                        </div>
+                      </form>
+                    </div>
+                    <div class="modal-footer">
+                      <div class="col-sm-offset-1 col-sm-3">
+                        <button type="button" class="btn btn-block btn-style" data-dismiss="modal">
+                          <span class="glyphicon glyphicon-chevron-left"></span>&nbsp;&nbsp;退出
+                        </button>
+                      </div>
+                      <div class="col-sm-offset-4 col-sm-3">
+                        <button type="button" class="btn btn-block btn-style" data-dismiss="modal" data-toggle="modal" data-target="#mymodal2">
+                          登陆&nbsp;&nbsp;<span class="glyphicon glyphicon-chevron-right"></span>
+                        </button>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </li>
+            <li>
+              <a class="" data-toggle="modal" data-target="#mymodal2" href="#" >
+              <span class="glyphicon glyphicon-log-in"></span> 登录
+              </a>
+              <div class="modal" id="mymodal2"  data-backdrop="false" tabindex="-1" role="dialog" aria-hidden="true" >
+                <div class="modal-dialog modal-style">
+                  <div class="modal-content">
+                    <div class="modal-header">
+                      <h2 class="modal-title text-center">用户登录</h2>
+                    </div>
+                    <div class="modal-body">
+                      <form class="form form-horizontal" action="" method="" role="form">
+                        <div class="form-group">
+                          <div class="col-sm-offset-3 col-sm-6" >
+                            <input class="form-control " type="text"  name="" value=""
+                            placeholder="邮箱" data-ng-focus="toggle5()" data-ng-blur="toggle5()">
+                          </div>
+                          <div class="col-sm-3">
+                            <span class="help-block  help-style" data-ng-show="myVar5">请输入你的邮箱</span>
+                          </div>
+                        </div>
+                        <div class="form-group">
+                          <div class="col-sm-offset-3 col-sm-6">
+                            <input class="form-control" type="password" name="" value=""
+                            placeholder="密码" data-ng-focus="toggle6()" data-ng-blur="toggle6()">
+                          </div>
+                          <div class="col-sm-3">
+                            <span class="help-block help-style" data-ng-show="myVar6">请输入你的密码</span>
+                          </div>
+                        </div>
+                        <div class="form-group">
+                          <div class="col-sm-offset-3 col-sm-6">
+                            <button type="button" class='form-control btn btn-block btn-style'>登录</button>
+                          </div>
+                        </div>
+                      </form>
+                    </div>
+                    <div class="modal-footer">
+                      <div class="col-sm-offset-1 col-sm-4">
+                        <button type="button" class="btn btn-block btn-style" data-dismiss="modal">
+                          <span class="glyphicon glyphicon-chevron-left"></span>&nbsp;&nbsp;&nbsp;&nbsp;退出
+                        </button>
+                      </div>
+                      <div class="col-sm-offset-3 col-sm-4">
+                        <button type="button" class="btn btn-block btn-style"
+                        data-dismiss="modal" data-toggle="modal" data-target="#mymodal1">
+                          注册&nbsp;&nbsp;&nbsp;&nbsp;<span class="glyphicon glyphicon-chevron-right"></span>
+                        </button>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </nav>
+    <div id="myCarousel" class="carousel slide">
+       <!-- 轮播指标 -->
+       <ol class="carousel-indicators">
+          <li data-target="#myCarousel" data-slide-to="0" class="active"></li>
+          <li data-target="#myCarousel" data-slide-to="1"></li>
+          <li data-target="#myCarousel" data-slide-to="2"></li>
+          <li data-target="#myCarousel" data-slide-to="3"></li>
+       </ol>
+       <!-- 轮播项目 -->
+       <div class="carousel-inner">
+        <div class="item active item-style">
+             <img src="./img/huangshan.jpg" alt="黄山" style="width:100%">
+             <div class="carousel-caption">
+                <h1>黄山</h1>
+                <p>
+                  <a class="btn btn-lg btn-primary" href="http://baike.baidu.com/subview/2312/5837055.htm"
+                  target="_blank" role="button">了解更多</a>
+                </p>
+             </div>
+          </div>
+          <div class="item item-style">
+             <img src="./img/taishan.jpg" alt="泰山" style="width:100%">
+             <div class="carousel-caption">
+                <h1>泰山</h1>
+                <p>
+                  <a class="btn btn-lg btn-primary" href="http://baike.baidu.com/subview/5464/5236569.htm" target="_blank" role="button">了解更多</a>
+                </p>
+             </div>
+          </div>
+          <div class="item item-style">
+             <img src="./img/huashan.jpg" alt="华山" style="width:100%">
+             <div class="carousel-caption">
+                <h1>华山</h1>
+                <p>
+                  <a class="btn btn-lg btn-primary" href="http://rj.baidu.com/soft/detail/12966.html?ald" target="_blank" role="button">了解更多</a>
+                </p>
+             </div>
+          </div>
+          <div class="item item-style">
+             <img src="./img/hengshan.jpg" alt="衡山" style="width:100%">
+             <div class="carousel-caption">
+                <h1>衡山</h1>
+                <p>
+                  <a class="btn btn-lg btn-primary" href="http://baike.baidu.com/subview/10017/13495680.htm" target="_blank" role="button">了解更多</a>
+                </p>
+             </div>
+          </div>
+       </div>
+       <!-- 轮播导航按钮 -->
+       <!-- <a class="carousel-control left" href="#myCarousel" data-slide="prev" role="button">
+          <span class="glyphicon glyphicon-chevron-left"></span>
+          <span class="sr-only">上一页</span>
+       </a>
+       <a class="carousel-control right" href="#myCarousel" data-slide="next" role="button">
+          <span class="glyphicon glyphicon-chevron-right"></span>
+          <span class="sr-only">下一页</span>
+       </a> -->
+    </div>
+    <div class="content content1" id="html">
+      <div class="container">
+        <div class="jumbotron jumbotron-ps jumbotron1">
+          <div class="jumbotron-left jumbotron11">
+            <h2><b>HTML</b>&nbsp;&nbsp;<small>Hyper Text Markup Language</small></h2>
+            <p>HTML是用来描述网页的一种语言。</p>
+            <ul type="disc">
+              <li class="list-style">HTML指的是超文本标记语言</li>
+              <li class="list-style">HTML不是一种编程语言，而是一种标记语言</li>
+              <li class="list-style">标记语言是一套标记标签</li>
+              <li class="list-style">HTML使用标记标签来描述网页</li>
+            </ul>
+            <p style="text-indent:1.2em;"><a href="http://www.w3school.com.cn/html/index.asp" target="_blank">Learn more >></a></p>
+          </div>
+          <div class="jumbotron-right jumbotron12 text-center">
+            <embed src='http://player.youku.com/player.php/sid/XMTgyMzA1NTA1Mg==/v.swf' allowFullScreen='true' quality='high'
+            width='360' height='300' align='middle' allowScriptAccess='always' type='application/x-shockwave-flash'></embed>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="content content2" id="css">
+      <div class="container">
+        <div class="jumbotron jumbotron-ps jumbotron2">
+          <div class="jumbotron-left jumbotron21">
+            <h2><b>CSS</b>&nbsp;&nbsp;<small>Cascading Style Sheet</small></h2>
+            <p>CSS指的是层叠样式表</p>
+            <ul type="disc">
+              <li class="list-style">样式定义如何显示 HTML 元素</li>
+              <li class="list-style">样式通常存储在样式表中</li>
+              <li class="list-style">外部样式表可以极大提高工作效率</li>
+              <li class="list-style">外部样式表通常存储在 CSS 文件中</li>
+              <li class="list-style">多个样式定义可层叠为一个</li>
+            </ul>
+            <p style="text-indent:1.2em;"><a href="http://www.w3school.com.cn/css/css_intro.asp" target="_blank" id="back">Learn more >></a></p>
+          </div>
+          <div class="jumbotron-right jumbotron22 text-center">
+            <embed src='http://player.youku.com/player.php/sid/XMTczNzcxOTEzMg==/v.swf' allowFullScreen='true' quality='high'
+            width='408' height='340' align='middle' allowScriptAccess='always' type='application/x-shockwave-flash'></embed>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="content content3">
+      <div class="container">
+        <div class="panel-group" id="panels" role="tablist">
+          <div class="panel panel-default" style="margin:0px;">
+            <div class="panel-heading" data-toggle="collapse" data-parent="panels" data-target="#collapseOne">
+              <h3 class="panel-title">
+                <a>PHP</a>
+              </h3>
+            </div>
+            <div class="panle-collapse collapse" id="collapseOne" role="tabpanel">
+              <div class="panel-body">
+                <img src="./img/sucai1.jpg" alt="..." class="img-responsive img-circle">
+                <p>PHP（外文名:PHP: Hypertext Preprocessor，中文名：“超文本预处理器”）是一种通用开源脚本语言。
+                  语法吸收了C语言、Java和Perl的特点，利于学习，使用广泛，主要适用于Web开发领域。</p>
+                <p>PHP 独特的语法混合了C、Java、Perl以及PHP自创的语法。它可以比CGI或者Perl更快速地执行动态网页。用PHP做出的动态
+                  页面与其他的编程语言相比，PHP是将程序嵌入到HTML（标准通用标记语言下的一个应用）文档中去执行，执行效率比完全生成
+                  HTML标记的CGI要高许多；PHP还可以执行编译后代码，编译可以达到加密和优化代码运行，使代码运行更快。</p>
+              </div>
+            </div>
+          </div>
+          <div class="panel panel-default" style="margin:0px;">
+            <div class="panel-heading" data-toggle="collapse" data-parent="panels" data-target="#collapseTwo">
+              <h3 class="panel-title">
+                <a>C++</a>
+              </h3>
+            </div>
+            <div class="panle-collapse collapse " id="collapseTwo" role="tabpanel">
+              <div class="panel-body">
+                <img src="./img/sucai1.jpg" alt="..." class="img-responsive img-rounded">
+                <p>C++是C语言的继承，它既可以进行C语言的过程化程序设计，又可以进行以抽象数据类型为特点的基于对象
+                  的程序设计，还可以进行以继承和多态为特点的面向对象的程序设计。C++擅长面向对象程序设计的同时，
+                  还可以进行基于过程的程序设计，因而C++就适应的问题规模而论，大小由之。</p>
+                <p>C++不仅拥有计算机高效运行的实用性特征，同时还致力于提高大规模程序的编程质量与程序设计语言的问题描述能力。</p>
+              </div>
+            </div>
+          </div>
+          <div class="panel panel-default" style="margin:0px;">
+            <div class="panel-heading" data-toggle="collapse" data-parent="panels" data-target="#collapseThree">
+              <h3 class="panel-title">
+                <a>JAVA</a>
+              </h3>
+            </div>
+            <div class="panle-collapse collapse" id="collapseThree" role="tabpanel">
+              <div class="panel-body">
+                <img src="./img/sucai2.jpg" alt="..." class="img-responsive img-circle">
+                <p>Java是一门面向对象编程语言，不仅吸收了C++语言的各种优点，还摒弃了C++里难以理解的多继承、指针等概念，
+                  因此Java语言具有功能强大和简单易用两个特征。Java语言作为静态面向对象编程语言的代表，极好地实现了面向
+                  对象理论，允许程序员以优雅的思维方式进行复杂的编程。</p>
+                <p>Java具有简单性、面向对象、分布式、健壮性、安全性、平台独立与可移植性、多线程、动态性等特点。
+                  Java可以编写桌面应用程序、Web应用程序、分布式系统和嵌入式系统应用程序等 。</p>
+              </div>
+            </div>
+          </div>
+          <div class="panel panel-default" style="margin:0px;">
+            <div class="panel-heading" data-toggle="collapse" data-parent="panels" data-target="#collapseFour">
+              <h3 class="panel-title">
+                <a>SQL</a>
+              </h3>
+            </div>
+            <div class="panle-collapse collapse" id="collapseFour" role="tabpanel">
+              <div class="panel-body">
+                <img src="./img/sucai2.jpg" alt="..." class="img-responsive img-rounded">
+                <p>结构化查询语言(Structured Query Language)简称SQL，是一种特殊目的的编程语言，是一种数据库查询和程序设计语言，
+                  用于存取数据以及查询、更新和管理关系数据库系统；同时也是数据库脚本文件的扩展名。</p>
+                <p>结构化查询语言是高级的非过程化编程语言，允许用户在高层数据结构上工作。它不要求用户指定对数据的存放方法，
+                  也不需要用户了解具体的数据存放方式，所以具有完全不同底层结构的不同数据库系统, 可以使用相同的结构化查询语言
+                  作为数据输入与管理的接口。结构化查询语言语句可以嵌套，这使它具有极大的灵活性和强大的功能。</p>
+              </div>
+              <div class="panel-footer">
+
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <nav class="navbar navbar-inverse navbar-static-bottom navbar-bottom-style">
+      <div class="container-fluid">
+        <div class=" bottom-menu-left pull-left">
+          <ul>
+            <li><a href="#">产品</a>
+              <ul>
+                <li><a href="#">IOS版</a></li>
+                <li><a href="#">Android版</a></li>
+                <li><a href="#">价格</a></li>
+                <li><a href="#">数据安全</a></li>
+              </ul>
+            </li>
+            <li><a href="#">公司</a>
+              <ul>
+                <li><a href="#">媒体报道</a></li>
+                <li><a href="#">获得奖项</a></li>
+                <li><a href="#">关于公司</a></li>
+                <li><a href="#">团队介绍</a></li>
+                <li><a href="#">加入我们</a></li>
+              </ul>
+            </li>
+            <li><a href="#">支持</a>
+              <ul>
+                <li><a href="#">开发者中心</a></li>
+                <li><a href="#">问答社区</a></li>
+                <li><a href="#">用户指南</a></li>
+                <li><a href="#">官方博客</a></li>
+              </ul>
+            </li>
+            <li><a href="#">友情链接</a>
+              <ul>
+                <li><a href="#">W3School</a></li>
+                <li><a href="#">Bootstrap</a></li>
+                <li><a href="#">GitHub</a></li>
+              </ul>
+            </li>
+          </ul>
+        </div>
+        <div class="bottom-menu-right pull-right">
+          <ul>
+            <li><a href="#"><img src="./img/logo.jpg" alt="logo"></a></li>
+            <li>
+              <div class="div">
+                <div class="div1">
+                  <a><img src="./img/div1.png" alt="..." class="img-responsive img-circle"></a>
+                </div>
+                <div class="div2">
+                  <a><img src="./img/div2.png" alt="..." class="img-responsive img-circle"></a>
+                </div>
+                <div class="div3">
+                  <a><img src="./img/div3.png" alt="..." class="img-responsive img-circle"></a>
+                </div>
+                <div class="div4">
+                  <a><img src="./img/div4.png" alt="..." class="img-responsive img-circle"></a>
+                </div>
+                <div class="div5">
+                  <a><img src="./img/div5.png" alt="..." class="img-responsive img-circle"></a>
+                </div>
+              </div>
+            </li>
+            <li>
+              <form role="form">
+                <div class="form-group">
+                  <select class="form-control">
+                    <option value="" selected>中文</option>
+                    <option value="">英语</option>
+                  </select>
+                </div>
+              </form>
+            </li>
+          </ul>
+        </div>
+      </div>
+      <div class="container">
+        <div class="footer">
+          <p class="text-center">Copyright © 2016 Yuyan&nbsp;&nbsp;&nbsp;&nbsp;京ICP备13033480235号-5</p>
+        </div>
+      </div>
+    </nav>
+    <div class="fixedbox">
+      <a href="#myCarousel">
+          <span class="glyphicon glyphicon-arrow-up"></span>
+      </a>
+    </div>
+    <script src="./js/myscript.js"></script>
+  </body>
+</html>

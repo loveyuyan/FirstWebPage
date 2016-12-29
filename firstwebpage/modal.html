@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="../bootstrap/dist/css/bootstrap.css">
+    <script src="http://apps.bdimg.com/libs/angular.js/1.4.6/angular.min.js"></script>
+    <title>yuyan</title>
+  </head>
+  <style type="text/css" media="screen">
+    .btn-color{background: #47A447;color: #FDFCFA;border-radius: 25px;border-style: none;}
+    .help-style{font-size: 12px;}
+  </style>
+  <body ng-app="myApp" ng-controller="myCtrl">
+    <button type='button' class='btn btn-lg btn-default' data-toggle="modal" data-target=".mymodal" ></button>
+    <div class="modal fade mymodal" tabindex="-1" role="dialog" aria-labelledby="" aria-hidden="true">
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h2 class="modal-title text-center" id="">用户注册</h2>
+          </div>
+          <div class="modal-body">
+            <form class="form form-horizontal" action="" method="" role="form">
+              <div class="form-group">
+                <div class="col-sm-offset-3 col-sm-6" >
+                  <input class="form-control " type="text"  name="" value="" placeholder="邮箱" ng-focus="toggle1()" ng-blur="toggle1()">
+                </div>
+                <span class="help-block col-sm-3 help-style" ng-show="myVar1">请输入你的邮箱</span>
+              </div>
+              <div class="form-group">
+                <div class="col-sm-offset-3 col-sm-3">
+                  <input class="form-control" type="text" name="" value="" placeholder="验证码" ng-focus="toggle2()" ng-blur="toggle2()">
+                </div>
+                <div class="col-sm-3">
+                  <button type='submit' class='form-control btn btn-block btn-color'>获取验证码</button>
+                </div>
+                <span class="help-block col-sm-3 help-style" ng-show="myVar2">请输入你的验证码</span>
+              </div>
+              <div class="form-group">
+                <div class="col-sm-offset-3 col-sm-6">
+                  <input class="form-control" type="text" name="" value="" placeholder="姓名" ng-focus="toggle3()" ng-blur="toggle3()">
+                </div>
+                <span class="help-block col-sm-3 help-style" ng-show="myVar3">真实姓名，方便交流</span>
+              </div>
+              <div class="form-group">
+                <div class="col-sm-offset-3 col-sm-6">
+                  <input class="form-control" type="password" name="" value="" placeholder="密码" ng-focus="toggle4()" ng-blur="toggle4()">
+                </div>
+                <span class="help-block col-sm-3 help-style" ng-show="myVar4">密码最低为6位，牢记</span>
+              </div>
+              <div class="form-group">
+                <div class="col-sm-offset-3 col-sm-6">
+                  <button type="button" class='form-control btn btn-block btn-color'>注册</button>
+                  <span class="help-block"><small>点击注册，表明你同意我们的服务条款</small></span>
+                </div>
+              </div>
+            </form>
+          </div>
+          <div class="modal-footer">
+            <div class="col-sm-offset-1 col-sm-3">
+              <button type="button" class="btn btn-block btn-color" data-dismiss="modal"><span class="glyphicon glyphicon-chevron-left"></span>&nbsp;&nbsp;返回</button>
+            </div>
+            <div class="col-sm-offset-4 col-sm-3">
+              <button type="button" class="btn btn-block btn-color">登陆&nbsp;&nbsp;<span class="glyphicon glyphicon-chevron-right"></span></button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <script>
+      var app=angular.module('myApp', []);
+      app.controller('myCtrl', function($scope) {
+        $scope.myVar1 = false;
+        $scope.toggle1 = function() {
+          $scope.myVar1 = !$scope.myVar1;
+        }
+        $scope.myVar2 = false;
+        $scope.toggle2 = function() {
+          $scope.myVar2 = !$scope.myVar2;
+        }
+        $scope.myVar3 = false;
+        $scope.toggle3 = function() {
+          $scope.myVar3 = !$scope.myVar3;
+        }
+        $scope.myVar4 = false;
+        $scope.toggle4 = function() {
+          $scope.myVar4 = !$scope.myVar4;
+        }
+      });
+    </script>
+    <script src="http://libs.baidu.com/jquery/2.0.0/jquery.min.js"></script>
+    <script src="../bootstrap/dist/js/bootstrap.js"></script>
+  </body>
+</html>
