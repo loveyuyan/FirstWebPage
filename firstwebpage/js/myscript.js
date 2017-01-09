@@ -78,7 +78,7 @@ app.controller('myCtrl', function($scope) {
 function showTimer(){
 	var d=new Date();
 	var year=d.getFullYear();
-	var month=d.getMonth();
+	var month=d.getMonth()+1;
 	var day=d.getDate();
 	var weekday=d.getDay();
 	var week=new Array(7);
